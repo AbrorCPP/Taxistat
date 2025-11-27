@@ -88,11 +88,41 @@ class Admin:
                 i.color = input("Enter new color : ")
                 i.year = input("Enter new year : ")
 
+    def user_del(self):
+        name = input("Enter user name : ")
+        for i in self.users:
+            if i.name == name:
+                self.users.remove(i)
+                print("Removed successfully")
+
+    def car_del(self):
+        title = input("Enter car name : ")
+        for i in self.cars:
+            if i.title == title:
+                self.cars.remove(i)
+                print("Removed successfully")
+
+    def birl_del(self):
+        count = 1
+        print("=" * 30)
+        for obj in self.adb:
+            print(
+                f"{count}. {obj.user.name} {obj.user.age} {obj.user.worky} --> {obj.car.title} {obj.car.color} {obj.car.year}")
+            count += 1
+        a1 = int(input("Enter the connection you want to delete : ")) - 1
+        t = self.adb[a1]
+        user1 = User(t.user.name,t.user.age,t.user.worky)
+        car1 = Car(t.car.title,t.car.color,t.car.year)
+        self.users.append(user1)
+        self.cars.append(car1)
+        self.adb.remove(t)
+
+
 r = Admin()
 
 def manager(s:Admin):
     while True:
-        a = input(" 1.Add menu\n 2.Edit menu\n 3.Print menu\n 4.Manage menu\n 5.Exit\n----->")
+        a = input(" 1.Add menu\n 2.Edit menu\n 3.Print menu\n 4.Manage menu\n 5.Delete menu \n 6.Exit\n----->")
         if a == "1":
             while True:
                 b = input(" 1.add user\n 2.add car\n 3.exit")
@@ -113,7 +143,7 @@ def manager(s:Admin):
                     break
         elif a == "3":
             while True:
-                b = input(" 1.print users\n 2.print cars\n  3.print groups\n 4.break")
+                b = input(" 1.print users\n 2.print cars\n 3.print groups\n 4.exit")
                 if b == "1":
                     s.printUs()
                 elif b == "2":
@@ -127,6 +157,17 @@ def manager(s:Admin):
                 b = input(" 1.manage groups\n 2.exit")
                 if b == "1":
                     s.birl()
+                else:
+                    break
+        elif a == "5":
+            while True:
+                b = input(" 1.delete user\n 2.delete car\n 3.delete groups\n 4.exit")
+                if b == "1":
+                    s.user_del()
+                elif b == "2":
+                    s.car_del()
+                elif b == "3":
+                    s.birl_del()
                 else:
                     break
         else:
