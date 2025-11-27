@@ -34,11 +34,13 @@ class Admin:
         self.cars.append(sc)
     def printUs(self):
         count = 0
+        print("_"*40)
         for user in self.users:
             count+=1
             print(f"{count}. {user.name} {user.age} {user.worky}")
     def printCars(self):
         count = 0
+        print("_"*40)
         for car in self.cars:
             count+=1
             print(f"{count}. {car.title} {car.color} {car.year}")
@@ -62,11 +64,26 @@ class Admin:
 
     def birl_print(self):
         count = 1
+        print("="*30)
         for obj in self.adb:
             print(
                 f"{count}. {obj.user.name} {obj.user.age} {obj.user.worky} --> {obj.car.title} {obj.car.color} {obj.car.year}")
             count += 1
+    def user_edit(self):
+        name = input("Enter user name : ")
+        for i in self.users:
+            if i.name == name:
+                i.name = input("Enter new name : ")
+                i.age = input("Enter new age : ")
+                i.worky = input("Enter new working year : ")
 
+    def car_edit(self):
+        car = input("Enter car name : ")
+        for i in self.cars:
+            if i.title == car:
+                i.title = input("Enter new title : ")
+                i.color = input("Enter new color : ")
+                i.year = input("Enter new year : ")
 
 r = Admin()
 
