@@ -129,6 +129,8 @@ def manager(s:Admin):
                     s.birl()
                 else:
                     break
+        else:
+            break
 
 manager(r)
 
