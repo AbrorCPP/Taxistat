@@ -20,40 +20,43 @@ class Admin:
         self.users = []
         self.cars = []
         self.adb = []
+
     def addUser(self):
         user1 = input("Enter the name : ")
         age = input("Enter the age : ")
         worky = input("Enter the working year : ")
         su = User(user1,age,worky)
         self.users.append(su)
+
     def addCar(self):
         car1 = input("Enter the car name : ")
         color = input("Enter the color : ")
         year = input("Enter the car year : ")
         sc = Car(car1,color,year)
         self.cars.append(sc)
+
     def printUs(self):
         count = 0
         print("_"*40)
         for user in self.users:
             count+=1
             print(f"{count}. {user.name} {user.age} {user.worky}")
+
     def printCars(self):
         count = 0
         print("_"*40)
         for car in self.cars:
             count+=1
             print(f"{count}. {car.title} {car.color} {car.year}")
+
     def birl(self):
         print("=="*20)
         self.printUs()
         print("--"*20)
         self.printCars()
         print("=="*20)
-
         t1 = int(input("Enter user number : ")) - 1
         t2 = int(input("Enter car number : ")) - 1
-
         try:
             s1 = Bir(self.users[t1], self.cars[t2])
             self.adb.append(s1)
@@ -89,21 +92,43 @@ r = Admin()
 
 def manager(s:Admin):
     while True:
-        a = input(" 1.Add User\n 2.Add Car\n 3.Print Users\n 4.Print Cars\n 5.Manage together\n 6.Print managed\n ----->")
+        a = input(" 1.Add menu\n 2.Edit menu\n 3.Print menu\n 4.Manage menu\n 5.Exit\n----->")
         if a == "1":
-            s.addUser()
+            while True:
+                b = input(" 1.add user\n 2.add car\n 3.exit")
+                if b == "1":
+                    s.addUser()
+                elif b == "2":
+                    s.addCar()
+                else:
+                    break
         elif a == "2":
-            s.addCar()
+            while True:
+                b = input(" 1.edit user\n 2.edit car\n 3.exit")
+                if b == "1":
+                    s.user_edit()
+                elif b == "2":
+                    s.car_edit()
+                else:
+                    break
         elif a == "3":
-            s.printUs()
+            while True:
+                b = input(" 1.print users\n 2.print cars\n  3.print groups\n 4.break")
+                if b == "1":
+                    s.printUs()
+                elif b == "2":
+                    s.printCars()
+                elif b == "3":
+                    s.birl_print()
+                else:
+                    break
         elif a == "4":
-            s.printCars()
-        elif a == "5":
-            s.birl()
-        elif a == "6":
-            s.birl_print()
-        else:
-            break
+            while True:
+                b = input(" 1.manage groups\n 2.exit")
+                if b == "1":
+                    s.birl()
+                else:
+                    break
 
 manager(r)
 
